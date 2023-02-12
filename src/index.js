@@ -13,6 +13,7 @@ function dataSent() {
   let name = inputElement.value;
 
   if (!name) {
+    onClear();
     return;
   }
 
@@ -40,8 +41,7 @@ function dataSent() {
       return;
     })
     .catch(onError);
-  listEl.innerHTML = '';
-  cardContainerEl.innerHTML = '';
+  onClear();
 }
 
 function createMarkup({ name, flags }) {
@@ -54,18 +54,22 @@ function createMarkup({ name, flags }) {
 }
 
 function createCountryCard({ name, capital, population, flags, languages }) {
-  return `<li class="list-item" >
+  return `
+  <div class="card-wraper">
     <img src=${flags.svg} class="list-img" />
-    <h2 class="article-title">${name.common}</h2>
-    <span>Capital:${capital}</span>
-    <span>Population:${population}</span>
-    <span>Languages:${Object.values(languages)}</span>
-    
-  </li>
+    <h2 class="article-title">${name.common}</h2></div>
+    <div class="list-container">
+    <p><span>Capital: </span>${capital}</p>
+    <p><span>Population: </span>${population}</p>
+    <p><span>Languages: </span>${Object.values(languages)}</p>
   `;
 }
 
 function onError() {
   Notify.failure('Oops, there is no country with that name');
-  console.error('no country with that name');
+}
+
+function onClear() {
+  listEl.innerHTML = '';
+  cardContainerEl.innerHTML = '';
 }

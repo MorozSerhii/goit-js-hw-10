@@ -27,8 +27,7 @@ align-items: center;
 
 .list-img{
 
-  width: 90px;
-  height: 60px;
+  width: 50px;
 }
 .article-title{
 margin-left: 10px;
@@ -37,4 +36,20 @@ margin-left: 10px;
 .country-list{
   margin: 0;
   padding: 0;
+}
+.list-container{
+  display: flex;
+  flex-direction: column;
+}
+.card-wraper{
+  display: flex;
+  
+}
+
+span{
+  font-weight: 900;
+}
+
+p{
+  font-weight: 400;
 }
